@@ -11,7 +11,7 @@ class: 'text-center'
 lineNumbers: false
 # some information about the slides, markdown enabled
 info: |
-  ## Backend Services in Rust
+  ## Burn framework and AI Rust
   
 # persist drawings in exports and build
 colorSchema: 'dark'
@@ -21,7 +21,7 @@ drawings:
 css: unocss
 ---
 
-# Backend Services in <span class="text-orange-300">Rust</span>
+# <span class="text-orange-300">AI</span> in <span class="text-orange-300">Rust</span> and the <span class="text-orange-300">Burn</span> framework
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
   </span>
@@ -31,7 +31,7 @@ css: unocss
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:edit />
   </button>
-  <a href="https://github.com/cyprusrust/backend-services-rust" target="_blank" alt="GitHub"
+  <a href="https://github.com/cyprusrust/burn-ai-in-rust" target="_blank" alt="GitHub"
     class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-github />
   </a>
@@ -57,16 +57,22 @@ css: unocss
     height: 180px;
     width: 180px;
     border-radius: 90px;
-    background: #7f8c8d url(/framp.jpg) no-repeat;
+    background: #7f8c8d url(/framp.png) no-repeat;
     background-clip: padding-box;
     background-size: 180px;
   }
   .cyprusrust {
-    height: 180px;
+    height: 150px;
     background: #0e1a22 url(/cyprus-rust.png) no-repeat;
     background-position: center center;
     background-clip: padding-box;
-    background-size: 180px;
+    background-size: 150px;
+  }
+  .cdc {
+    height: 150px;
+    background: #0e1a22 url(/cdc-logo.svg) no-repeat;
+    background-position: center center;
+    background-size: 120px;
   }
   .slidev-layout a:hover {
     color: #fff;
@@ -74,7 +80,7 @@ css: unocss
 </style>
 
 <div class="flex justify-center">
-  <div class="flex flex-col self-end -mb-7">
+  <div class="flex flex-col self-end -mb-7 px-8">
     <div class="avatar" />
     <a href="https://framp.me" target="_blank">framp.me</a>
     <span>Federico Rampazzo</span>
@@ -82,16 +88,77 @@ css: unocss
   <div class="flex flex-col">
     <apiplantLogo />
     <a href="https://apiplant.com" class="mx-8" target="_blank">apiplant.com</a>
-    <div class="m-8 mb-0 w-64 rounded-3xl rounded-bl-0 cyprusrust" />
-    <a href="https://cyprusrust.org" class="mx-8" target="_blank">cyprusrust.org</a>
+    <div class="flex">
+      <div class="flex flex-col">
+        <div class="m-8 mb-0 w-64 rounded-3xl rounded-bl-0 cyprusrust" />
+        <a href="https://cyprusrust.org" class="mx-8" target="_blank">cyprusrust.org</a>
+      </div>
+      <div class="flex flex-col">
+        <div class="m-8 mb-0 w-64 rounded-3xl rounded-bl-0 cdc" />
+        <a href="https://cdc.cy" class="mx-8" target="_blank">cdc.cy</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <!--
-Our team at has plenty of experience in Python and JavaScript and it was common for us to just create a new project in Django or Fastify. We kept experimenting with Rust over the years and we feel that now the ecosystem is mature enough and that the benefits of using Rust outweigh the larger ecosystem that other languages offer.
+My name is Federico Rampazzo, my company is called API Plant and I focus on AI consulting.
 
-Our new default choice for when we start a new project is to reach out for Rust!
+I'm also one of the organizers of the Cyprus Developer Community and the founder of Cyprus Rust user group!
 -->
+
+---
+theme: seriph
+class: 'text-center'
+css: unocss
+---
+# &nbsp;
+# &nbsp;
+# &nbsp;
+# &nbsp;
+
+# Why use Rust for AI?
+
+
+<!--
+Today I want to talk about my experience using Rust instead of Python to do Generative AI projects.
+
+Why would you want to use Rust for AI?
+-->
+---
+
+# Why? 
+
+<div class="flex gap-9xl mx-auto w-148 my-8">
+  <ul>
+    <li>Strong Static Typing</li>
+    <li>Ownership System</li>
+    <li>More safety - Less bugs</li>
+  </ul>
+  <ul>
+    <li>Easy deployment</li>
+    <li>Fearless Concurrency</li>
+    <li>Great tooling</li>
+  </ul>
+</div>
+
+<img src="/tweet.png" />
+
+<!--
+Rust has an amazing type system which allow you to express ideas very well.
+The emphasis on safety and memory ownership helps you catch a lot of bugs at runtime.
+
+I find the resulting codebase to be great to maintain at the cost of making prototyping slower!
+
+Safe concurrency is another great perk to have:
+I once deployed a tensorflow based solution in Rust to do image classification - I then was able to scale the code synchronising downloads, api calls and inference across multiple threads and eventually to process 400M images on a small cluster.
+
+Deployment is easy, you can compile everything to a single binary and be done. 
+
+You also don't have to deal with 2000 different package managers; cargo, Rust's package manager, works pretty well.
+  
+-->
+
 
 ---
 layout: two-cols
@@ -99,59 +166,57 @@ layout: two-cols
 
 <template v-slot:default>
 
-# Why Rust?
-- Growing ecosystem
-- Most loved language
-- High level language
-- Performance
+# My experience
+ - 2 Gen AI projects in Rust
+   - Preparing datasets
+   - Text model finetuning
+   - Image generation
+   - Retrieval Augmented Generation (RAG)
+# &nbsp;
 
 </template>
 <template v-slot:right>
 
-```rust
-#[derive(Debug)]
-struct Person {
-  name: String,
-  age: u8,
-}
+# &nbsp;
 
-impl Person {
-  fn say_hello(&self) {
-    println!("DEBUG: {:?}", self);
-    println!("My name is {} and I'm {} years old", 
-      self.name, self.age);
+ - 2 Gen AI Python project
+   - Preparing datasets
+   - Text generation
+   - Audio generation
+   - RAG
+
+ - 1 GenAI JavaScript (+ Python) project
+   - Preparing datasets
+   - Vercel AI
+   - Text model finetuning
+<style>
+  .slidev-layout {
+    background-image: url('/rust-vs-python.png');
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: 10% 100%;
   }
-}
-```
-
-```rust
-let arr = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let new_arr: Vec<i32> = arr.iter()
-  .map(|x| x * 2)
-  .filter(|x| x % 3 == 0)
-  .fold(Vec::new(), |mut acc, x| {
-    let last = acc.pop().unwrap_or_default();
-    acc.push(last);
-    acc.push(last + x);
-    acc
-  });
-println!("{:?}", new_arr);
-```
+</style>
 
 </template>
 
 <!--
-Why Rust?
+In the last year I did 2 projects using Rust, 2 in Python and 1 in JavaScript.
 
-Rust is growing and there are a lot of high quality dependencies available. It's the been the most loved language in the Stack Overflow survey for 7 years!
-I would compare it to Node.js in 2014. Sure, we still don't have automated CMS and fancy frameworks but there are serious foundations which allow you to be productive.
+Then, even if Elon Musk doesn't want me to...
+-->
 
-On the technical side, Rust is a high level language, it offers all the functional methods and syntactic sugar you may want. You have first class function, iterators, futures (or promises), async / await syntax, meta-programming and OOP classes.
-For example this struct here contains a string, a number and we can implement any methods we want on it (static or not). That command starting with a hash symbol is a macro, a powerful piece of code which will get expanded and replaced with more complicated code. This allow us to think one layer up and not have to write a lot of boilerplate.
-So it's a very high level language; at the same time it is also a low level language, offering you exceptional performance and asking you to think about how you are using the memory.
+---
 
-How does Rust reconcile these two aspects?
-For once Rust frequently uses the concept of zero cost abstractions. For example, this iterative methods in many high level languages would be executed sequentially with 3 different loops. In Rust they get compiled to a single loop and are as fast as a less declarative for loop.
+# Training 3 AGIs in my spare time
+
+<video autoplay loop src="/agi.mp4" />
+
+
+<!--
+I trained 3 AGIs in my spare time
+
+** fake laughs from the audience **
 -->
 
 ---
@@ -160,76 +225,121 @@ layout: two-cols
 
 <template v-slot:default>
 
-# Why Rust?
-
-- Type Safety
-- Borrow Checker
-
+# My experience
+ - 2 Gen AI projects in Rust
+   - Preparing datasets
+   - Text model finetuning
+   - Image generation
+   - Retrieval Augmented Generation (RAG)
+# &nbsp;
 
 </template>
 <template v-slot:right>
 
-```rust
-// FIX ME
-use std::thread;
+# &nbsp;
 
-let data = vec![1, 2, 3];
+ - 2 Gen AI Python project
+   - Preparing datasets
+   - Text generation
+   - Audio generation
+   - RAG
 
-let handle1 = thread::spawn(move || {
-    for i in data.iter() {
-        println!("Thread 1: {}", i);
-        thread::sleep(Duration::from_millis(1));
-    }
-});
-
-let handle2 = thread::spawn(move || {
-    for i in data.iter() {
-        println!("Thread 2: {}", i);
-        thread::sleep(Duration::from_millis(1));
-    }
-});
-
-handle1.join().unwrap();
-handle2.join().unwrap();
-```
-
-
-
-</template>
-
-<!--
-But performance is not the only trick up of Rust's sleeve. The main reason I love writing Rust is safety. The type system is incredibly powerful and allow you, and the dependencies you use, to express a series of constraints which make it hard to produce incorrect code which compile.
-Rust also has an innovative system, the borrow checker, which keep tracks of data ownership at compile time. In this way you're preventing runtime errors and you don't pay a performance price in production.
-
-Our experience is that you generally spend more time writing your code and less time chasing bugs. To make a comparison, with Typescript we got close but we didn't get the same benefits: between dependencies with no or partial types or a developer who really needed to ship something and decided to skip the types, we were never really sure whether a codebase was reliable or not.
-
-Let's have a look at this example: 
-cd ./demo
-cargo run
-
-It doesn't compile
-
-Look at the error rustc --explain E0382
-
-Bada bum bada bam, it works with Arc
--->
-
----
-
-# Architecture deep dive
-
-https://github.com/apiplant/anonpaste-backend
-
-<br>
-
-Dependencies:
-- Axum - web application framework, middleware based
-- sqlx - SQL abstraction layer
-- dotenv, anyhow, thiserror - handy utilities you want in your app
+ - 1 GenAI JavaScript / Python project
+   - Preparing datasets
+   - Vercel AI
+   - LangchainJS
+   - Text model finetuning
 
 <style>
   .slidev-layout {
-    background: #9b59b6;
+    background-image: url('/rust-vs-python.png');
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: 10% 100%;
+  }
+</style>
+</template>
+
+<!--
+Going back to my experience, I'll start with JavaScript.
+
+
+Preparing datasets required doing manual scripts, there are not many fancy libraries to manipulate datasets.
+The Vercel AI documentation needs some work and I was not impressed by LangChainJS support vs LangChain (but things might have changed since then).
+Overall I don't see any reasons to choose JS, unless that's the only language your team knows.
+
+Using Python meant dealing with a lot of setup issues and debugging buggy dependencies upstream.
+On the plus side, everything you might need is available with a Python API.
+
+Rust was definitely harder to start with but I ended up with codebases that are easier to maintain.
+In some cases I had to scavenge github for an algorithm implementation; sometimes I had to port it from the equivalent python library.
+But overall they were solvable problems and allowed me to work in a codebase I could trust.
+
+-->
+
+---
+layout: two-cols
+---
+
+<template v-slot:default>
+
+# Data Preparation
+
+- [polars](https://pola.rs/) (instead of pandas)
+- [ndarray](https://github.com/rust-ndarray/ndarray) (instead of numpy)
+- [linfa](https://rust-ml.github.io/linfa/) (instead of scikit)
+- [tiktoken](https://github.com/openai/tiktoken), [tokenizers](https://github.com/huggingface/tokenizers)
+- [safetensors](https://github.com/huggingface/safetensors)
+
+
+</template>
+<template v-slot:right>
+
+<img src="/polars.png" />
+<img src="/linfa.png" />
+
+</template>
+
+<!--
+On the data preparation side, Rust shines.
+Oftentimes you end up with pretty complicated code to generate or extract data from somewhere else and being able to create nice abstractions is great.
+
+Polars is a great alternative to Pandas, I started using it in place of Pandas on Python too!
+
+ndarray is comparable to numby;
+
+Linfa is nice when the algorithm you want has been implemented but there are a few holes compared to scikit.
+
+Tokenizers commonly used from Python are written in Rust, so they work out of the box.
+
+The same is true for safetensors (the format for tensors).
+
+-->
+---
+
+
+# Model inference - Candle
+
+https://github.com/huggingface/candle
+
+
+ - Similar API to PyTorch without the torchlib
+ - Support for quantized models
+ - Support LoRA
+ - Runs on wasm (CPU) on the web, run on serverless
+ - Examples with popular models:
+    - LLama, OLMo, Mistral, Gemma, Qwen
+    - StableDiffusion
+    - Whisper
+    - YOLO, SAM and more
+
+### Limits:
+ - Inference is not as optimised as PyTorch on CUDA
+ - Backpropagation is supported but focus is not on training
+
+<style>
+  .slidev-layout {
+    background: #145DA0;
   }
   .slidev-layout h1 {
     color: #fff;
@@ -241,303 +351,119 @@ Dependencies:
 </style>
 
 <!--
-But let's get to the meat: I want to show you around a simple production application so that you can walk out of here and think "Cool, maybe I don't know Rust but with a bit of extra time I *could* do that instead of picking my framework of choice!"
-You can find the code on github for later and you'll find these slides as well in an incoming blog post on cyprusrust.org.
 
-As usual we're sitting on the shoulders of OSS giants: axum is the web framework, sqlx is a layer to connect to a pool of SQL connections. 
+For model inference, candle is a great minimalist framework
 
-Show main
+It has a similar API to Pytorch but it's implemented completely in Rust
+It supports quantized models and LoRa
 
-Show server
+It can run on wasm on cpu in the browser
+It has sample implementation for all models you want to run
 
-Show routers
+Performance is good on CPU and Apple Silicon, for CUDA there is still work to do.
 
-Show models
+Doing training is possible, as backpropagation is supported, but there is little documentation / code
 
-Show tests
--->
-
----
-layout: two-cols
----
-
-<template v-slot:default>
-
-# Database Integration
-
-```rust
-let paste = sqlx::query_as!(
-    Paste,
-    "SELECT id, 
-            content, 
-            expiry_time, 
-            expiry_views 
-        FROM paste WHERE id = ?",
-    id,
-)
-.fetch_one(&mut *conn)
-.await?;
-```
-
-```rust
-async fn view_paste_handler(
-    Path(id): Path<String>,
-    State(app_state): State<AppState>,
-) -> Result<Json<Paste>, Error> {
-    let mut conn = app_state.pool.acquire().await?;
-    let paste = Paste::view(&mut conn, id).await?;
-    Ok(Json(paste))
-}
-```
-
-</template>
-<template v-slot:right>
-
-# &nbsp;
-
-
-```rust
-sqlx::query!(
-    "INSERT INTO paste ( id, content, 
-      expiry_time, expiry_views )
-        VALUES ( ?1, ?2, ?3, ?4)",
-    payload.id,
-    payload.content,
-    payload.expiry_time,
-    payload.expiry_views
-)
-.execute(conn)
-.await?;
-```
-
-<div class="p-2 text-dark-100">
-What happen if I put an non existant column or I try to use the wrong type for a bind?
-</div>
-</template>
-
-<!--
-Let's zoom in on some snippets so you can get a better idea of what's going on in a typical request.
-
-The resource receive the request and calls the model.
-
-The model is using an sqlx macro to query our Sqlite database and return the data as an instance of our type.
-
-The resource receive the data and serialise the response back
-
-Because sqlx is insanely cool, the SQL query is typechecked at compile time, so if you try to write the wrong query you'll get a compile error.
-
-Let's try.
 
 -->
 
 ---
 
-# Serde and types
 
-```rust
-#[derive(Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Paste {
-    pub id: String,
-    pub content: String,
-    pub expiry_time: Option<i64>,
-    pub expiry_views: Option<i64>,
-}
+# Model inference & training - Burn
 
-serde_json::to_string(&paste_payload)
-serde_json::from_slice(&body).unwrap()
+https://github.com/Tracel-Ai/burn
 
-async fn view_paste_handler(
-    Path(id): Path<String>,
-    State(app_state): State<AppState>,
-) -> Result<Json<Paste>, Error> {
-    let mut conn = app_state.pool.acquire().await?;
-    let paste = Paste::view(&mut conn, id).await?;
-    Ok(Json(paste))
-}
-```
+ - Great API to define a model for both inference and training
+ - Define a stream of tensor operations + auto optimizations
+ - Support multiple backends with the same API
+    - tch-rs (based on torchlib, fastest for cuda)
+    - wgpu 
+        - runs on gpu, faster than cpu, slower than cuda
+        - runs on WebGPU in the browser, faster than wasm
+    - candle!
+    - ndarray (cpu)
+ - Custom file format
+
+### Limits:
+ - Not a lot of examples, a few unsupported features
+ - No official supports for importing safetensors (yet)
+
+<style>
+  .slidev-layout {
+    background: #F55D14;
+    background-image: url('/burn.webp');
+    background-repeat: no-repeat;
+    background-position: 90% 90%;
+  }
+  .slidev-layout h1 {
+    color: #fff;
+  }
+
+  .slidev-layout a {
+    color: #fff;
+  }
+</style>
+
 
 <!--
-We've seen how much we're serialising and deserialising but we haven't seen exactly how. This is because serialisation and deserialisation is almost effortless, thanks to serde, another amazing library.
-For most types we can use the #derive macro to tell the compiler we want that type to be serialisable. 
-If a struct is made of types that can be automatically serialised, that's all you need to do.
-In this example I'm even using another macro to tell serde to serialise the properties in camelCase instead of snake_case (which is the rust default).
-In this way my frontend application will receive camelCase objects and won't even know about the snakes hiding in the backend.
+Burn is a different type of framework, it's an ambitious approach to ML frameworks.
 
-Axum has an implementation of Json which allow to return as response anything that can be serialised and that deserialise incoming payloads, turning them in the correct type.
+You define a stream of tensor operations and the framework optimize them for you.
+
+You can still do custom optimization by extending backends.
+
+Switching from training to inference with the same model definition is painless.
+
+It has its own file format which is as safe as safetensors and can be configured to be more or less compressed (based on your usecase) and use Rust type system to convert to the correct precision. 
+
+It also supports importing models from pickle and onnx... but not from safetensors (YET).
+
+Backends can be swapped at runtime.
+
+It supports torchlib, so you get the same performance of PyTorch, it supports candle and its gpu optimisation or ndarray which runs everywhere on cpu.
+
+It even has a wgpu backend which is a popular gpu abstraction library in Rust. The performance is not as good as CUDA but there are proposals to improve the situation. wgpu can also be deployed in the browser and from not very scientific tests, it's roughly 5-10x faster than using CPU and the fastest way to run inference in a browser.
+
+The main cons, especially compared to candle is the availability of examples and code available for it.
+
 -->
-
----
-layout: two-cols
 ---
 
-<template v-slot:default>
+# Burn training CLI UI
 
-# Error handling
-
-```rust
-#[derive(thiserror::Error, Debug)]
-pub enum Error {
-    #[error("NO_AUTHORIZATION")]
-    Unauthorized,
-    #[error("NO_PERMISSION")]
-    Forbidden,
-    #[error("NOT_FOUND")]
-    NotFound,
-    #[error("INTERNAL_DB_ERROR")]
-    Sqlx(sqlx::Error),
-    #[error("INTERNAL_ERROR")]
-    Anyhow(#[from] anyhow::Error),
-}
-
-impl From<sqlx::Error> for Error {
-    fn from(err: sqlx::Error) -> Self {
-        match err {
-            sqlx::Error::RowNotFound => Error::NotFound,
-            _ => Error::Sqlx(err),
-        }
-    }
-}
-```
-
-</template>
-
-<template v-slot:right>
-
-# &nbsp;
-```rust
-impl IntoResponse for Error {
-    fn into_response(self) -> Response {
-        (
-            self.status_code(),
-            Json(ErrorMessage {
-                msg: self.to_string(),
-            }),
-        )
-            .into_response()
-    }
-}
-```
-
-</template>
+<img src="/burn-train.png" />
 
 <!--
-Error handling is one of my favourite part of this codebase. Thanks to the powerful type systems and sprinkle of awesome dependencies defining your own error is as simple as creating an Enum.
-We can't force all our dependencies to use our errors, though.
-Luckily there is no need for that: Rust has a From trait which allow us to convert certain types in others. 
-The crate thiserror even provides a macro to automatically generate a From implementation, but we may want to do it ourselves to handle special case.
-
-In this example I'm checking whether sqlx couldn't find a row and helpfully convert into a Not Found error.
-
-In order for our error to work with axum, we need to implement this trait IntoResponse which convert our error in a status code and error message
--->
-
----
-layout: two-cols
----
-
-<template v-slot:default>
-
-# Testing
-
-```rust
-#[tokio::test]
-async fn fetch_paste() {
-    let config = &get_test_config();
-    let (router, app_state) = get_app(config).await.unwrap();
-    let mut conn = app_state.pool.acquire().await.unwrap();
-    Paste::create(
-        &mut conn,
-        CreatePaste {
-            id: "test-id".to_string(),
-            content: "Hello".to_string(),
-            expiry_time: None,
-            expiry_views: None,
-        },
-    )
-    .await
-    .unwrap();
-}
-```
-
-</template>
-
-<template v-slot:right>
-
-# &nbsp;
-
-```rust
-let response = router
-    .with_state(app_state)
-    .oneshot(
-        Request::builder()
-            .uri("/api/paste/test-id")
-            .body(Body::empty())
-            .unwrap(),
-    )
-    .await
-    .unwrap();
-
-assert_eq!(response.status(), StatusCode::OK);
-let response = response.into_body();
-let body = body::to_bytes(response).await.unwrap();
-let body: Value = serde_json::from_slice(&body).unwrap();
-assert_eq!(
-    body,
-    json!({
-      "content": "Hello".to_string(), 
-      "id": "test-id".to_string(),
-      "expiryTime": Null, 
-      "expiryViews": Null
-    })
-);
-```
-</template>
-
-<!--
-
-
-Let's have a look at tests
-
-We're getting the test configuration, creating our app and preparing the database with some data.
-
-Then we're building a request and firing it. 
-Lastly we use serde to check the body is what we expect.
-
+Burn also has a nice CLI UI for training. This would be the tensorboard equivalent
 -->
 
 ---
 
-# Deploy to fly.io
-
-```bash
-flyctl deploy # generate a failing build and configuration
-flyctl volumes create db -s 1 #1GB
-flyctl secrets set EMAIL_FROM=info@anonpaste.pw
-flyctl secrets set EMAIL_NAME=AnonPaste
-flyctl secrets set SENDGRID_API_KEY=SECRET
-flyctl secrets set DATABASE_URL=sqlite:/mnt/db/production.sqlite?mode=rwc
-flyctl deploy 
-```
-
-
-```ini
-# setup the volume we creataed
-[mount]
-source = "db"
-destination = "/mnt/db"
-```
+# Burn model 
+<img src="/code-conv.png" class="w-144 mx-auto" />
 
 <!--
-Good!
-Now that our app is tested and ready to be deployed, we can turn to fly.io
+This is a sample model, implementing a convolutional network for image classification
 
-Fly.io makes it relatively easy to deploy your app and they even have a generous free tier which allow you to run up to three apps, each with 1GB of storage.
+One interesting thing to note is that the Module derive generates code to make your model trainable.
+The type of our Model is generic on the type of backend used and we can see it's using 3 convolutional blocks, 2 linear layers, one dropout layer and uses gaussian error linear units as the activation function.
+The instances and their configuration for each of these layers will be part of the constructor of our model.
 
-The codebase has a Dockerfile and trying to deploy with fly.io should generate the correct configuration in a fly.toml file.
-Nothing will work though as we need secrets and a storage for our Sqlite database.
+-->
+---
 
-Once that's all set and done we can deploy again and this time we should have a Rust app running in the cloud!
+# Burn model 
+<img src="/code-llama.png" class="w-192 mx-auto" />
+
+<!--
+This instead is a high level implementation of llama.
+You can see the token embedding which turns token in vectors, the stack of layers with multi headed attention and residual connections which output our token vectors. You can see we are also passing:
+ - A mask which will be used to mask tokens generated after the current token
+ - A rotary encoder which is a clever way to encode the position of tokens as rotations in paired complex number
+ - A normalization layer (RMS - Root Mean Square)
+
+Thanks to Rust powerful type system, understanding what's happening behind the scene is much easier.
 
 -->
 
@@ -547,7 +473,9 @@ Once that's all set and done we can deploy again and this time we should have a 
 
 &nbsp;
 
-All the slides will be published on https://cyprusrust.org/blog
+All the slides will be published on https://cyprusrust.org/blog 
+
+and on https://cyprusrust.github.io/ai-rust-burn-slides
 
 Come and say hi on the CDC Discord: https://cdc.cy
 
@@ -566,7 +494,7 @@ Come and say hi on the CDC Discord: https://cdc.cy
 
 <!--
 That's all I've got! 
-I'll publish the slides over the weekend and please come and say hi in the discord! :)
+I'll publish the slides and please come and say hi in the discord! :)
 
 Thank you!
 -->
