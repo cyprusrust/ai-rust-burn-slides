@@ -1,4 +1,4 @@
-# Backend Services in Rust
+# AI in Rust and the Burn framework
 
 A presentation about [framp](https://github.com/framp)'s experience using Rust to write backend services.
 
